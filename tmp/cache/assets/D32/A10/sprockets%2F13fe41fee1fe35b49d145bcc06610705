@@ -1,7 +1,7 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1369754712.695429:@value{I"
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1370747121.102096:@value{I"
 class:ETI"BundledAsset;
 FI"id;
-TI"%f30d0228d7a86b22d22952968d6ae4c2;
+TI"%f15b8c607e1d01bc9a1d452e302fc526;
 FI"logical_path;
 TI"application.css;
 TI"pathname;
@@ -10,9 +10,9 @@ FI"content_type;
 TI"text/css;
 TI"
 mtime;
-TI"2013-05-28T12:25:11-03:00;
+TI"2013-06-09T00:04:55-03:00;
 TI"	body;
-TI"+/*
+TI"ˆ/*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
@@ -38,11 +38,12 @@ body{
   height: 100%;
 }
 
+/*
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
   color: #000000;
 }
-
+*/
 input {
   border: 1px solid;
 }
@@ -91,6 +92,19 @@ h2 {
 .user_nav_fields{
   margin-top: 1.5%;
   margin-left: 60%;
+}
+
+table.bordasimples {border-collapse: collapse;}
+
+table.bordasimples tr td {
+  border:1px solid #000000;
+}
+
+.texto {
+  position: absolute;
+  margin-top: 80%;
+  margin-left: 3%;
+  font-size: 16px;
 }
 
 .cadastro{
@@ -232,10 +246,10 @@ T[{I"	path;
 TI"1$root/app/assets/stylesheets/application.css;
 FI"
 mtime;
-TIu:	TimeèSÄKáµd
-:nano_numiM:nano_deni:submicro"30:offseti˛–’:	zoneI"BRT;
+TIu:	Time#UÄKx
+:nano_numi˜:nano_deni:submicro"P0:offseti˛–’:	zoneI"BRT;
 TI"hexdigest;
-TI"%642b7f6f518e7d3020f29c2bd8db875b;
+TI"%86d7e5bcec2e42638389a32afc88b096;
 FI"_version;
 TI"%46dde6621c301f4928e3b34efee9e3b5;
 F

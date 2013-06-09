@@ -23,11 +23,12 @@ body{
   height: 100%;
 }
 
+/*
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
   color: #000000;
 }
-
+*/
 input {
   border: 1px solid;
 }
@@ -76,6 +77,19 @@ h2 {
 .user_nav_fields{
   margin-top: 1.5%;
   margin-left: 60%;
+}
+
+table.bordasimples {border-collapse: collapse;}
+
+table.bordasimples tr td {
+  border:1px solid #000000;
+}
+
+.texto {
+  position: absolute;
+  margin-top: 80%;
+  margin-left: 3%;
+  font-size: 16px;
 }
 
 .cadastro{

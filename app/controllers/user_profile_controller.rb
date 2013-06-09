@@ -29,6 +29,7 @@ class UserProfileController < ApplicationController
   def profile
     @title = "Perfil do usuario"
     @user = UserProfile.find(params[:id])
+    @canals = Canal.find(:all, :conditions => ["user_id = ?", current_user.id])
   end
 
   def index

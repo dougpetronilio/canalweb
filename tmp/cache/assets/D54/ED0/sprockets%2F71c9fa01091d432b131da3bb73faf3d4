@@ -1,7 +1,7 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1369754712.9177322:@value{	I"length:ETi+I"digest;
-TI"%4c1732688f03da4d11e19dd3971c41e4;
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1370747121.2759295:@value{	I"length:ETiöI"digest;
+TI"%1a52208873b2c7a297f4dfe70ab9f4ae;
 FI"source;
-TI"+/*
+TI"ö/*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
@@ -27,11 +27,12 @@ body{
   height: 100%;
 }
 
+/*
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
   color: #000000;
 }
-
+*/
 input {
   border: 1px solid;
 }
@@ -80,6 +81,19 @@ h2 {
 .user_nav_fields{
   margin-top: 1.5%;
   margin-left: 60%;
+}
+
+table.bordasimples {border-collapse: collapse;}
+
+table.bordasimples tr td {
+  border:1px solid #000000;
+}
+
+.texto {
+  position: absolute;
+  margin-top: 80%;
+  margin-left: 3%;
+  font-size: 16px;
 }
 
 .cadastro{
@@ -215,5 +229,5 @@ h2 {
 }
 ;
 TI"_version;
-TI"%f30d0228d7a86b22d22952968d6ae4c2;
+TI"%f15b8c607e1d01bc9a1d452e302fc526;
 F

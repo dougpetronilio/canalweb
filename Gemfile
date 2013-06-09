@@ -8,7 +8,6 @@ gem 'rails', '3.1.0'
 gem 'mysql2'
 gem 'devise'
 gem 'paperclip', "~> 2.3"
-gem 'rmagick'
 
 gem 'therubyracer'
 
