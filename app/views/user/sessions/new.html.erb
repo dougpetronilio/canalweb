@@ -1,0 +1,21 @@
+<div id="user_nav" class="user_nav">
+  <div id="user_nav_fields" class="user_nav_fields">
+
+  <% if user_signed_in? %>
+    Logado como: <%= current_user.email %>
+    <%= link_to "Sair", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <div><%= f.label :email %> <%= f.email_field :email %>
+      <%= f.label :password %> <%= f.password_field :password %>
+      <% if devise_mapping.rememberable? -%>
+        <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+      <% end -%>
+
+      <%= f.submit "Entrar" %>
+    <% end %>
+    ou <%= link_to "Cadastrar-se", new_user_registration_path %></div>
+  <% end %>
+  </div>
+
+</div>

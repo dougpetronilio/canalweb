@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canalweb</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if user_signed_in? %>
+  <div id="barra_cima" class="barra_cima">
+    <div id="logo_on" class="logo_on"><b>CanalWeb</b></div>
+    <div id="links_on" class="links_on">
+    Logado como: <%= current_user.email %>
+    <%= link_to "Sair", destroy_user_session_path, :method => :delete %>
+    </div>
+  </div>
+  <div id="barra_lateral" class="barra_lateral">
+    <div id="quadro_user" class="quadro_user">
+      <div id="foto" class="foto">
+        <%= image_tag current_user.user_profile.foto.url(:small) %>
+      </div>
+      <div id="info_user" class="info_user">
+        <b><%= current_user.user_profile.nome_completo %></b></br>
+        <%= link_to "Meu perfil", :controller => "/user_profile", :action => "show" %></br>
+        <%= link_to "Editar perfil", :controller => "/user_profile", :action => "edit" %></br>
+      </div>
+    </div>
+    <div id="quadro_links" class="quadro_links">
+      <div id="menu" class="menu">
+        <%= image_tag "/assets/images/inicial.png"%>
+        <%= link_to "Inicio", :controller => "/user_profile", :action => "index" %></br>
+        <%= image_tag "/assets/images/canal.png"%>
+        <%= link_to "Meus Canais", :controller => "/canals", :action => "index" %></br>
+        <%= image_tag "/assets/images/amigos.png"%>
+        <%= link_to "Meus Amigos", :controller => "/amigos", :action => "index" %></br>
+        <%= image_tag "/assets/images/arquivo.png"%>
+        <%= link_to "Meus Canais Favoritos", :controller => "/favorito", :action => "index" %></br>
+        <%= image_tag "/assets/images/pesquisaarquivo.png"%>
+        <%= link_to "Procurar Canais", :controller => "/canals", :action => "buscar" %></br>
+        <%= image_tag "/assets/images/editar.png"%>
+        <%= link_to "Editar conta", :controller => "/users", :action => "edit" %></br>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="body" class="body">
+    <h1><%= @title %></h1>
+
+    <%= yield %>
+    </br>
+  </div>
+  <div id="barra_lateral_direita" class="barra_lateral_direita">
+    <div id= "quadro_amigos" class="quadro_amigos">
+      <b>Amigos(<%=meus_amigos.length%>)</b>
+      <%= link_to "Ver todos", :controller => "/amigos", :action => "index"%>
+      <hr>
+      <% if meus_amigos.length > 0 %>
+        <% cont = 0 %>
+        <% for j in (0..2) %>
+          <div id="amigo_linha" class="amigo_linha">
+            <% for i in (0..3) %>
+              <% if meus_amigos[cont] != nil %>
+                <div id="amigo" class="amigo">
+                  <%= image_tag meus_amigos[cont].amigo.foto.url(:icone) %></br>
+                  <%= link_to meus_amigos[cont].amigo.nome, :controller => "/user_profile", :action => "profile", :id => meus_amigos[cont].amigo.id %>
+                  <% cont = cont +1 %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+<div id="html" class="html">
+  <div id="user_nav" class="user_nav">
+    <div id="logo" class="logo">
+      <h1>CanalWeb</h1>
+    </div>
+    <div id="user_nav_fields" class="user_nav_fields">
+
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <div><%= f.label :email %> </br>
+          <%= f.email_field :email %></br>
+        <%= f.label :senha %> </br>
+        <%= f.password_field :password %></br>
+        <% if devise_mapping.rememberable? -%>
+          <%= f.check_box :remember_me %> <%= f.label :lembrar %>
+        <% end -%>
+
+        <%= f.submit "Entrar" %>
+      <% end %>
+    </div>
+  </div>
+  <div id="cadastro" class="cadastro">
+    <h3>Não tem cadastro</h3>
+    <hr>
+    <h2 align="center">Cadastro grátis!</h2>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div><%= f.label "email:" %>
+      <%= f.email_field :email %></div>
+
+      <div><%= f.label "senha:" %>
+      <%= f.password_field :password %></div>
+
+      <div><%= f.label "confirme a senha:" %>
+      <%= f.password_field :password_confirmation%></div>
+
+      <div><%= f.submit "cadastrar" %></div>
+  <% end %>
+
+  </div>
+</div>
+<% end %>
+</body>
+</html>

@@ -1,0 +1,5 @@
+</br>
+<% @favoritos.each do |favorito| %>
+  <%= link_to favorito.canal.nome, :controller => "canals", :action => "show", :id => favorito.canal.id %>
+   <%= favorito.canal.descricao %></br>
+<% end %>

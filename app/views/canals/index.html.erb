@@ -1,0 +1,30 @@
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Tipo programacao</th>
+    <th>Idade minima</th>
+    <th>Imagem</th>
+    <th>Descricao</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @canals.each do |canal| %>
+  <tr>
+    <td><%= canal.nome %></td>
+    <td><%= canal.tipo_programacao %></td>
+    <td><%= canal.idade_minima %></td>
+    <td><%= canal.imagem %></td>
+    <td><%= canal.descricao %></td>
+    <td><%= link_to 'Mostrar', canal %></td>
+    <td><%= link_to 'Editar', edit_canal_path(canal) %></td>
+    <td><%= link_to 'excluir', canal, confirm: 'tem certeza?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Criar Canal', new_canal_path %>

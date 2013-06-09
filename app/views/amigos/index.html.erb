@@ -1,0 +1,47 @@
+
+<table>
+  <% @amigos.each do |amigo| %>
+    <tr>
+      <td><%= image_tag amigo.amigo.foto.url(:icone)%></td>
+      <td><%= link_to amigo.amigo.nome_completo, :controller => "user_profile", :action => "profile", :id => amigo.amigo.id %> </td>
+      <td><%= amigo.amigo.sexo %></td>
+      <td><%= amigo.status%></td>
+      <% if amigo.status != 'pedido' %>
+        <td><%= link_to "remover amizade", :controller => "/amigos", :action => "remover", :id => amigo.amigo.id %> </td>
+      <% else %>
+        <td><%= link_to "aceitar amizade", :controller => "/amigos", :action => "aceitar", :id => amigo.amigo.id %> </td>
+        <td><%= link_to "rejeitar amizade", :controller => "/amigos", :action => "remover", :id => amigo.amigo.id %> </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+</br>
+</br>
+
+<%= form_tag() do %>
+  <div class="form_row">
+    <label for="q">Buscar por:</label>
+    <%= text_field_tag "q", params[:q]%>
+    <input type="submit" value="Buscar" />
+  </div>
+<% end %>
+
+</br>
+
+<% if @usuarios and not @usuarios.empty? %>
+  <table class="usuarios" border="0" cellpadding="5" cellspacing="1">
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Sexo</th>
+    </tr>
+    <% @usuarios.each do |usuario| %>
+      <tr>
+        <td><%= image_tag usuario.foto.url(:icone)%></td>
+        <td><%= link_to usuario.nome_completo, :controller => "/user_profile", :action => "profile", :id => usuario.id %> </td>
+        <td><%= usuario.idade %></td>
+        <td><%= usuario.sexo %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

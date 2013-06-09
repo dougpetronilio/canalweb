@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml"
+          layout="absolute"
+          borderStyle="solid"
+          alpha="0.75"
+          headerHeight="15"
+          color="#F000FF"
+          showEffect="Glow"
+          hideEffect="Fade"
+          creationComplete="init()"
+          title="{nome}"
+          fontWeight="normal"
+          fontSize="8">
+
+
+    <mx:Script>
+        <![CDATA[
+
+            import mx.controls.Image;
+            import br.com.canalweb.utils.Singleton;
+            import mx.core.UIComponent;
+
+            [Bindable]
+            [Embed(source="../../../../assets/User.png")]
+            public var userOff:Class;
+
+            [Bindable]
+            [Embed(source="../../../../assets/sound_none.png")]
+            public var audioOff:Class;
+
+            [Bindable]
+            [Embed(source="../../../../assets/sound.png")]
+            public var audioOn:Class;
+
+            [Bindable]
+            [Embed(source="../../../../assets/webcam.png")]
+            public var videoOff:Class;
+
+            [Bindable]
+            [Embed(source="../../../../assets/webcam_delete.png")]
+            public var videoOn:Class;
+
+            [Bindable]
+            public var nome:String="";
+
+            [Bindable]
+            public var chave:String="";
+
+            [Bindable]
+            public var nc:NetConnection;
+
+            [Bindable]
+            private var model:Singleton = Singleton.getInstance();
+
+            [Bindable]
+            private var mic:Microphone = Microphone.getMicrophone();
+
+            [Bindable]
+            private var cam:Camera = Camera.getCamera();
+
+            private var pachTime:Timer = new Timer(500);
+
+            private var cont:int=22;
+
+            private var ui:UIComponent;
+
+            private var vid:Video;
+
+            private var nsPub:NetStream;
+
+            private var nsPlay:NetStream;
+
+            private function init():void
+            {
+                ui = new UIComponent();
+                ui.width = _canvasVideo.width;
+                ui.height = _canvasVideo.height;
+
+                vid = new Video(ui.width, ui.height);
+
+                nsPub = new NetStream(model.nc);
+
+                if(chave == model.key)
+                {
+                    if(!cam)
+                    {
+
+                        var icone:Image = new Image();
+                        icone.source = userOff;
+                        icone.height = ui.height;
+                        icone.width = ui.width;
+                        icone.x = 10;
+                        icone.y = 20;
+                        ui.addChild(icone);
+
+                        _btnVideo.enabled = false;
+                        _btnVideo.toolTip = "Voce nao tem um dispositivo de video";
+                    }
+                    if(!mic)
+                    {
+                        _btnAudio.enabled = false;
+                        _btnAudio.toolTip = "Voce nao tem um dispositivo de audio";
+                    }
+                    nsPub.publish(chave);
+                    pachTime.start()
+                }
+            }
+
+            private function podActive(e:Event):void
+            {
+                if(cont==1)
+                {
+                    pachTime.stop();
+                    this.setStyle("backgroundColor", "#000000");
+                }else
+                {
+                    if(cont > 11)
+                    {
+                        cont -= 1;
+
+                        if(this.getStyle("backgroundColor") == 0)
+                        {
+                            this.setStyle("backgroundColor", "#ECC906");
+                        }else
+                        {
+                            this.setStyle("backgroundColor", "#000000");
+                        }
+                    }
+                }
+            }
+
+            private function pubAudio():void
+            {
+                if(_btnAudio.getStyle("icon") == audioOff)
+                {
+                    mic.rate == 11;
+                    mic.setSilenceLevel(0);
+                    nsPub.attachAudio(mic);
+
+                    _btnAudio.setStyle("icon", audioOn);
+                }else
+                {
+                    nsPub.attachAudio(null);
+
+                    _btnAudio.setStyle("icon", audioOff);
+                }
+            }
+
+            private function pubVideo():void
+            {
+                if(_btnVideo.getStyle("icon") == videoOff)
+                {
+                    cam.setQuality(0, 90);
+                    cam.setKeyFrameInterval(48);
+                    cam.setLoopback(true);
+                    cam.setMode(800, 800, 30, true);
+
+                    nsPub.attachCamera(cam);
+                    vid.attachCamera(cam);
+                    ui.addChild(vid);
+
+                    _canvasVideo.addChild(ui);
+                    _btnVideo.setStyle("icon", videoOn);
+                }else
+                {
+                    nsPub.attachCamera(null);
+                    vid.attachCamera(null);
+
+                    _canvasVideo.removeChild(ui);
+                    _btnVideo.setStyle("icon", videoOff);
+                }
+            }
+        ]]>
+    </mx:Script>
+
+
+    <mx:Canvas id="_canvasVideo" backgroundColor="#000000" height="400" width="600" x="1" y="1" />
+
+    <mx:ControlBar horizontalAlign="right" height="53" y="95">
+        <mx:Button id="_btnVideo" icon="{videoOff}"
+                   click="pubVideo()" toolTip="clique para ativar seu video"
+                   height="36" width="36"/>
+        <mx:Button id="_btnAudio" icon="{audioOff}"
+                   click="pubAudio()" toolTip="clique para ativar seu audio"
+                   height="36" width="36"/>
+    </mx:ControlBar>
+
+
+</mx:Panel>

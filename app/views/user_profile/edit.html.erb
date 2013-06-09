@@ -1,0 +1,51 @@
+<%= form_for :user_profile do |f| %>
+<fieldset>
+  <div class="field">
+    <%= f.label "Foto de Perfil" %>
+    <%= f.file_field :foto %>
+  </div>
+  <div class="field">
+    <%= f.label :nome %>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :sobrenome %>
+    <%= f.text_field :sobrenome %>
+  </div>
+  <div class="field">
+    <label for="sexo">Sexo</label>
+    <%= radio_button :user_profile, :sexo, "Masculino" %>Masculino
+    <%= radio_button :user_profile, :sexo, "Feminino" %>Feminino
+  </div>
+  <div class="field">
+    <label for="nascimento">Nascimento</label>
+    <%= date_select :user_profile, :nascimento,
+                           :start_year => Time.now.year,
+                           :end_year => 1900,
+                           :include_blank => true,
+                           :order => [:day, :month, :year]%>
+  </div>
+
+  <div class="field">
+    <%= f.label :cidade %>
+    <%= f.text_field :cidade %>
+  </div>
+
+  <div class="field">
+    <%= f.label :estado %>
+    <%= f.text_field :estado %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pais %>
+    <%= f.text_field :pais %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cep %>
+    <%= f.text_field :cep, :maxlength => 9 %>
+  </div>
+
+  <%= submit_tag "Salvar", :class => "submit", :action => "update" %>
+</fieldset>
+<% end %>

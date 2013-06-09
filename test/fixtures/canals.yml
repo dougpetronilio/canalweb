@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nome: MyString
+  tipo_programacao: MyString
+  idade_minima: 1
+  imagem: MyString
+  descricao: MyText
+
+two:
+  nome: MyString
+  tipo_programacao: MyString
+  idade_minima: 1
+  imagem: MyString
+  descricao: MyText

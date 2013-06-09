@@ -1,0 +1,25 @@
+
+<%= form_tag() do %>
+  <div class="form_row">
+    <label for="texto">Buscar por:</label>
+    <%= text_field_tag "texto", params[:texto]%>
+    <input type="submit" value="buscar" />
+  </div>
+<% end %>
+
+</br>
+
+<% if @canals and not @canals.empty? %>
+  <table class="canals" border="0" cellpadding="5" cellspacing="1">
+    <tr>
+      <th>Nome</th>
+      <th>Descricao</th>
+    </tr>
+    <% @canals.each do |canal| %>
+      <tr>
+        <td><%= link_to canal.nome, :controller => "/canals", :action => "show", :id => canal.id %> </td>
+        <td><%= canal.descricao %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

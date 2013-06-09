@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="400" height="400">
+  <param name="src" value="/swf/canalweb.swf" />
+  <embed src="/swf/canalweb.swf" FlashVars="id=<%=current_user.user_profile.id%>&canal=<%= @canal.id%>&code=<%=@canal.user_id %>" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="640" height="480"></embed>
+</object>
+</br>
+<p>
+  <b>Nome:</b>
+  <%= @canal.nome %>
+</p>
+
+<p>
+  <b>Tipo programacao:</b>
+  <%= @canal.tipo_programacao %>
+</p>
+
+<p>
+  <b>Idade minima:</b>
+  <%= @canal.idade_minima %>
+</p>
+
+<p>
+  <b>Imagem:</b>
+  <%= @canal.imagem %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @canal.descricao %>
+</p>
+
+<% if @canal.user_id != current_user.user_profile.id %>
+  <% if @favorito != nil %>
+    <%= link_to 'Remover Favorito', :controller => "/favorito", :action => "deletar", :favorito_id => @favorito  %> |
+  <% else %>
+    <%= link_to 'Adicionar Favorito', :controller => "/favorito", :action => "adicionar", :canal_id => @canal.id %> |
+  <% end %>
+
+<% end %>
+<%= link_to 'Voltar', canals_path %>
