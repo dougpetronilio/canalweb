@@ -1,7 +1,7 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1370747121.102096:@value{I"
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1370751181.110582:@value{I"
 class:ETI"BundledAsset;
 FI"id;
-TI"%f15b8c607e1d01bc9a1d452e302fc526;
+TI"%7bed1bc56eb90eab641571d510653dac;
 FI"logical_path;
 TI"application.css;
 TI"pathname;
@@ -10,9 +10,9 @@ FI"content_type;
 TI"text/css;
 TI"
 mtime;
-TI"2013-06-09T00:04:55-03:00;
+TI"2013-06-09T01:12:57-03:00;
 TI"	body;
-TI"ˆ/*
+TI"/*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
@@ -25,6 +25,8 @@ body{
   background: #FFFFFF;
   font-family: Arial;
   font-size: 12px;
+  width: 100%;
+  height: 100%;
 }
 
 .html{
@@ -104,7 +106,7 @@ table.bordasimples tr td {
   position: absolute;
   margin-top: 80%;
   margin-left: 3%;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .cadastro{
@@ -246,10 +248,10 @@ T[{I"	path;
 TI"1$root/app/assets/stylesheets/application.css;
 FI"
 mtime;
-TIu:	Time#UÄKx
-:nano_numi˜:nano_deni:submicro"P0:offseti˛–’:	zoneI"BRT;
+TIu:	Time$UÄ:ê3
+:nano_numi:nano_deni:submicro"p:offseti˛–’:	zoneI"BRT;
 TI"hexdigest;
-TI"%86d7e5bcec2e42638389a32afc88b096;
+TI"%454ceef6c2afe0bda256c49fa5722d5c;
 FI"_version;
 TI"%46dde6621c301f4928e3b34efee9e3b5;
 F

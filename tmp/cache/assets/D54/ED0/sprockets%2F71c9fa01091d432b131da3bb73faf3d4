@@ -1,7 +1,7 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1370747121.2759295:@value{	I"length:ETiöI"digest;
-TI"%1a52208873b2c7a297f4dfe70ab9f4ae;
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1370751181.2323086:@value{	I"length:ETiI"digest;
+TI"%aa6324b97f23c68455c327dc1cf99bb9;
 FI"source;
-TI"ö/*
+TI"/*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
@@ -14,6 +14,8 @@ body{
   background: #FFFFFF;
   font-family: Arial;
   font-size: 12px;
+  width: 100%;
+  height: 100%;
 }
 
 .html{
@@ -93,7 +95,7 @@ table.bordasimples tr td {
   position: absolute;
   margin-top: 80%;
   margin-left: 3%;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .cadastro{
@@ -229,5 +231,5 @@ table.bordasimples tr td {
 }
 ;
 TI"_version;
-TI"%f15b8c607e1d01bc9a1d452e302fc526;
+TI"%7bed1bc56eb90eab641571d510653dac;
 F

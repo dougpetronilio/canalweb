@@ -6,7 +6,7 @@ class UserProfile < ActiveRecord::Base
                            :url => "/assets/user_profiles/:id/:style/:basename.:extension",
                            :path => ":rails_root/public/assets/user_profiles/:id/:style/:basename.:extension"
 
-  validates_attachment_size :foto, :less_then => 5.megabytes
+  validates_attachment_size :foto, :less_then => 30.megabytes
   validates_attachment_content_type :foto, :content_type => ['image/jpeg', 'image/png']
 
   def idade
