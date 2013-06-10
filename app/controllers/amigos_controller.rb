@@ -3,7 +3,8 @@ class AmigosController < ApplicationController
     @title = "Meus Amigos"
     @amigos = Amigo.all(:conditions => ["user_profile_id = ?", current_user.user_profile.id])
     if params[:q] != nil
-      @usuarios = UserProfile.all(:conditions => ["nome like ? or sobrenome like ?", params[:q], params[:q]])
+      puts "Parametros: #{params}"
+      @usuarios = UserProfile.all(:conditions => ["nome like ? or sobrenome like ?", "%#{params[:q]}%", "%#{params[:q]}%"])
     end
   end
 
