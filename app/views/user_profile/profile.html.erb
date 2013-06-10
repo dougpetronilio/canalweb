@@ -8,6 +8,7 @@ email: <%= @user.user.email %></br>
 
 </br>
 </br>
+<h3>Canais do usuário:</h3>
 <% @canals.each do |canal| %>
   <table class='bordasimples'>
   <tr>
@@ -17,11 +18,21 @@ email: <%= @user.user.email %></br>
     <td><%= canal.imagem %></td>
     <td><%= canal.descricao %></td>
     <td><%= link_to 'Mostrar', canal %></td>
-    <td><%= link_to 'Editar', edit_canal_path(canal) %></td>
-    <td><%= link_to 'excluir', canal, confirm: 'tem certeza?', method: :delete %></td>
   </tr>
   </table>
 <% end %>
+
+<h3>Amigos do usuário:</h3>
+<table>
+  <% @amigos.each do |amigo| %>
+    <tr>
+      <td><%= image_tag amigo.amigo.foto.url(:icone)%></td>
+      <td><%= link_to amigo.amigo.nome_completo, :controller => "user_profile", :action => "profile", :id => amigo.amigo.id %> </td>
+    </tr>
+  <% end %>
+</table>
+</br>
+</br>
 
 <% unless Amigo.amizade?(current_user.user_profile, @user) %>
   <% if current_user.user_profile != @user %>
